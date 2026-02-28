@@ -77,7 +77,7 @@ class FeedPage extends StatelessWidget {
                             padding: const EdgeInsets.all(3.0),
                             child: CircleAvatar(
                               backgroundColor: Colors.grey[300],
-                              child: const Icon(Icons.person, color: Colors.white),
+                              backgroundImage: NetworkImage('https://picsum.photos/200/200?random=$index'),
                             ),
                           ),
                         ),
@@ -104,9 +104,9 @@ class FeedPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const CircleAvatar(
+                          CircleAvatar(
                             radius: 18,
-                            child: Icon(Icons.person, size: 20),
+                            backgroundImage: NetworkImage('https://picsum.photos/100/100?random=${index + 10}'),
                           ),
                           const SizedBox(width: 10),
                           const Text(
@@ -126,8 +126,12 @@ class FeedPage extends StatelessWidget {
                       height: 400,
                       width: double.infinity,
                       color: Colors.grey[200],
-                      child: const Center(
-                        child: Icon(Icons.image, size: 100, color: Colors.grey),
+                      child: Image.network(
+                        'https://picsum.photos/600/600?random=$index',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => const Center(
+                          child: Icon(Icons.broken_image, size: 50, color: Colors.grey),
+                        ),
                       ),
                     ),
                     // Post Actions
